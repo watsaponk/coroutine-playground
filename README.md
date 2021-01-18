@@ -1,7 +1,7 @@
 # Android Coroutine Playground
 Explore Kotlin Coroutine Possibility
 
-### Explore List
+## Explore List
 - [ ] Basic suspend function
 - [ ] Coroutine Unit Test
 - [ ] Flow & Channel
@@ -13,7 +13,7 @@ Explore Kotlin Coroutine Possibility
   - [ ] Merge
   - [ ] Debounce & Delay
 
-### Result
+## Result
 |Subject|Result|
 |---|---|
 |-|-|
