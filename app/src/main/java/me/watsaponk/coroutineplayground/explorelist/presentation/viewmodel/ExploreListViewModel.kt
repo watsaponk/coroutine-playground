@@ -3,6 +3,8 @@ package me.watsaponk.coroutineplayground.explorelist.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import me.watsaponk.coroutineplayground.explorelist.data.ExploreRepositoryImpl
 import me.watsaponk.coroutineplayground.explorelist.presentation.extension.toUiModel
 
@@ -25,13 +27,15 @@ class ExploreListViewModel : ViewModel() {
     }
 
     fun dispatch(action: ExploreListAction) {
-        if (action is ExploreListAction.LoadExploreSubjectAction) {
-            if (!isInitialized) {
-                isInitialized = true
-                val result = repository.getExploreSubjects().map { exploreSubject ->
-                    exploreSubject.toUiModel()
+        viewModelScope.launch {
+            if (action is ExploreListAction.LoadExploreSubjectAction) {
+                if (!isInitialized) {
+                    isInitialized = true
+                    val result = repository.getExploreSubjects().map { exploreSubject ->
+                        exploreSubject.toUiModel()
+                    }
+                    reducer(ExploreListResult.LoadExploreSubjectResult(result))
                 }
-                reducer(ExploreListResult.LoadExploreSubjectResult(result))
             }
         }
     }

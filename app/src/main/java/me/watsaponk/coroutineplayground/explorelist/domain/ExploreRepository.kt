@@ -2,6 +2,6 @@ package me.watsaponk.coroutineplayground.explorelist.domain
 
 interface ExploreRepository {
 
-    fun getExploreSubjects(): List<ExploreSubject>
+    suspend fun getExploreSubjects(): List<ExploreSubject>
 
 }
