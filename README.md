@@ -15,6 +15,23 @@ Explore Kotlin Coroutine Possibility
   - [ ] Debounce & Delay
 
 ## Result
-|Subject|Result|
-|---|---|
-|Basic suspend function|**suspend** - temporarity prevent from continuing or being in force or effect<br><br><ul><li>can invoke by another suspend function or within coroutine</li><li>it like pause and resume (not blocking thread)</li><li>sequential function</li><li>complie to function with callback interface `Continuation<T>`</li></ul>|
+#### Basic suspend function
+**suspend** (sus·pend, /səˈspend/) - temporarity prevent from continuing or being in force or effect
+- can invoke by another suspend function or within coroutine
+- it like pause and resume (not blocking thread)
+- sequential function
+- complie to function with callback interface `Continuation<T>`
+```kotlin
+public interface Continuation<in T> {
+    /**
+     * The context of the coroutine that corresponds to this continuation.
+     */
+    public val context: CoroutineContext
+
+    /**
+     * Resumes the execution of the corresponding coroutine passing a successful or failed [result] as the
+     * return value of the last suspension point.
+     */
+    public fun resumeWith(result: Result<T>)
+}
+```
