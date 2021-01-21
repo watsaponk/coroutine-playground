@@ -2,7 +2,7 @@
 Explore Kotlin Coroutine Possibility
 
 ## Explore List
-- [ ] Basic suspend function
+- [x] Basic suspend function
 - [ ] Scopes
 - [ ] Coroutine Unit Test
 - [ ] Flow & Channel
@@ -17,4 +17,4 @@ Explore Kotlin Coroutine Possibility
 ## Result
 |Subject|Result|
 |---|---|
-|-|-|
+|Basic suspend function|**suspend** - temporarity prevent from continuing or being in force or effect<br><br><ul><li>can invoke by another suspend function or within coroutine</li><li>it like pause and resume (not blocking thread)</li><li>sequential function</li><li>complie to function with callback interface `Continuation<T>`</li></ul>|
