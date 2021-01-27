@@ -1,17 +1,17 @@
 package me.watsaponk.coroutineplayground.explorelist.data
 
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import me.watsaponk.coroutineplayground.common.CoroutineContextProvider
 import me.watsaponk.coroutineplayground.explorelist.domain.ExploreRepository
 import me.watsaponk.coroutineplayground.explorelist.domain.ExploreSubject
 
-class ExploreRepositoryImpl : ExploreRepository {
+class ExploreRepositoryImpl constructor(private val contextProvider: CoroutineContextProvider) : ExploreRepository {
 
     override suspend fun getExploreSubjects(): List<ExploreSubject> {
         // TODO watch this https://www.youtube.com/watch?v=YrrUCSi72E8
-        delay(2_000L)
-        return withContext(Dispatchers.IO) {
+        return withContext(contextProvider.IO) {
+            delay(2_000L)
             getEntities().map { entity ->
                 entity.toModel()
             }

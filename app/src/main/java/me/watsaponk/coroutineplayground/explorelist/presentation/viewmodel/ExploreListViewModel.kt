@@ -5,13 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import me.watsaponk.coroutineplayground.common.AppCoroutineContextProvider
 import me.watsaponk.coroutineplayground.explorelist.data.ExploreRepositoryImpl
 import me.watsaponk.coroutineplayground.explorelist.presentation.extension.toUiModel
 
 class ExploreListViewModel : ViewModel() {
 
     private val repository by lazy {
-        ExploreRepositoryImpl()
+        ExploreRepositoryImpl(AppCoroutineContextProvider())
     }
 
     private var currentState = ExploreListViewState.idle()
