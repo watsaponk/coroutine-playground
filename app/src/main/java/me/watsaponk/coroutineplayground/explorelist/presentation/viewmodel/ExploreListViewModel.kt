@@ -1,19 +1,15 @@
 package me.watsaponk.coroutineplayground.explorelist.presentation.viewmodel
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import me.watsaponk.coroutineplayground.common.AppCoroutineContextProvider
-import me.watsaponk.coroutineplayground.explorelist.data.ExploreRepositoryImpl
+import me.watsaponk.coroutineplayground.explorelist.domain.ExploreRepository
 import me.watsaponk.coroutineplayground.explorelist.presentation.extension.toUiModel
 
-class ExploreListViewModel : ViewModel() {
-
-    private val repository by lazy {
-        ExploreRepositoryImpl(AppCoroutineContextProvider())
-    }
+class ExploreListViewModel @ViewModelInject constructor(private var repository: ExploreRepository) : ViewModel() {
 
     private var currentState = ExploreListViewState.idle()
 

@@ -5,8 +5,11 @@ import kotlinx.coroutines.withContext
 import me.watsaponk.coroutineplayground.common.CoroutineContextProvider
 import me.watsaponk.coroutineplayground.explorelist.domain.ExploreRepository
 import me.watsaponk.coroutineplayground.explorelist.domain.ExploreSubject
+import javax.inject.Inject
 
-class ExploreRepositoryImpl constructor(private val contextProvider: CoroutineContextProvider) : ExploreRepository {
+class ExploreRepositoryImpl @Inject constructor(
+    private val contextProvider: CoroutineContextProvider
+) : ExploreRepository {
 
     override suspend fun getExploreSubjects(): List<ExploreSubject> {
         // TODO watch this https://www.youtube.com/watch?v=YrrUCSi72E8

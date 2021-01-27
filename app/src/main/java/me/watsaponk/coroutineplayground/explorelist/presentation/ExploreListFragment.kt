@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import me.watsaponk.coroutineplayground.R
 import me.watsaponk.coroutineplayground.databinding.FragmentExploreListBinding
 import me.watsaponk.coroutineplayground.explorelist.presentation.adapter.ExploreSubjectAdapter
@@ -13,6 +14,7 @@ import me.watsaponk.coroutineplayground.explorelist.presentation.extension.setVi
 import me.watsaponk.coroutineplayground.explorelist.presentation.viewmodel.ExploreListViewModel
 import me.watsaponk.coroutineplayground.explorelist.presentation.viewmodel.ExploreListViewState
 
+@AndroidEntryPoint
 class ExploreListFragment : Fragment(R.layout.fragment_explore_list) {
 
     private val viewModel by viewModels<ExploreListViewModel>()
