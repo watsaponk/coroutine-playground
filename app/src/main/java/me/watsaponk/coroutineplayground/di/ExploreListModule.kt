@@ -7,8 +7,8 @@ import dagger.hilt.android.components.ApplicationComponent
 import me.watsaponk.coroutineplayground.explorelist.data.ExploreRepositoryImpl
 import me.watsaponk.coroutineplayground.explorelist.domain.ExploreRepository
 
-@InstallIn(ApplicationComponent::class)
 @Module
+@InstallIn(ApplicationComponent::class)
 abstract class ExploreListModule {
 
     @Binds
