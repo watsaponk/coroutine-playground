@@ -1,8 +1,10 @@
 package me.watsaponk.coroutineplayground.explorelist.data
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import me.watsaponk.coroutineplayground.common.TestCoroutineContextProvider
+import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -15,15 +17,20 @@ class ExploreRepositoryImplTest {
 
     private lateinit var sut: ExploreRepositoryImpl
 
-    private val testCoroutineContextProvider = TestCoroutineContextProvider()
+    private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
     @Before
     fun setUp() {
-        sut = ExploreRepositoryImpl(testCoroutineContextProvider)
+        sut = ExploreRepositoryImpl(TestCoroutineContextProvider(testCoroutineDispatcher))
+    }
+
+    @After
+    fun tearDown() {
+        testCoroutineDispatcher.cleanupTestCoroutines()
     }
 
     @Test
-    fun `When get entities success`() = testCoroutineContextProvider.testCoroutineDispatcher.runBlockingTest {
+    fun `When get entities success`() = testCoroutineDispatcher.runBlockingTest {
         // GIVEN
 
         // WHEN
