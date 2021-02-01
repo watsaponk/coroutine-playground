@@ -4,7 +4,7 @@ Explore Kotlin Coroutine Possibility
 ## Explore List
 - [x] Basic suspend function
 - [ ] Scopes
-- [ ] Coroutine Unit Test
+- [x] Coroutine Unit Test
 - [ ] Flow & Channel
 - [ ] Async
 - [ ] Integrate with RxJava
@@ -35,3 +35,20 @@ public interface Continuation<in T> {
     public fun resumeWith(result: Result<T>)
 }
 ```
+---
+#### Coroutine unit Test
+In my opinoin testing coroutine can saparate into 2 category
+- Testing `ViewModel`
+  - You have to stub `TestCoroutineDispatcher` into `Dispatchers.setMain(dispatcher: CoroutineDispatcher)` at call `resetMain()` after done testing
+- Testing basic `suspend` function
+  - For basic `suspend` function can be done the same way, if you run it on main thread.
+  - For `IO` or other thread except main you should create coroutine context provider and stub it when testing
+  ```kotlin
+  interface CoroutineContextProvider {
+
+      val Main: CoroutineContext
+
+      val IO: CoroutineContext
+
+  }
+  ```
